@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Putting Practice Tracker</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div id="setup" class="screen active">
+  <h1>Putting Practice</h1>
+  <p class="subtitle">Track 3 balls per hole for multiple players</p>
+
+  <div class="card">
+    <label for="numPlayers">Number of Players</label>
+    <input type="number" id="numPlayers" min="1" max="12" value="2">
+    <div class="btn-row" style="margin-bottom:12px;">
+      <button type="button" onclick="setPlayers(1)">1</button>
+      <button type="button" onclick="setPlayers(2)">2</button>
+      <button type="button" onclick="setPlayers(3)">3</button>
+      <button type="button" onclick="setPlayers(4)">4</button>
+    </div>
+
+    <label for="numHoles">Number of Holes</label>
+    <input type="number" id="numHoles" min="1" max="36" value="9">
+    <div class="btn-row" style="margin-bottom:12px;">
+      <button type="button" onclick="setHoles(9)">9</button>
+      <button type="button" onclick="setHoles(18)">18</button>
+    </div>
+
+    <div id="playerNames"></div>
+
+    <button onclick="startGame()" style="width:100%; margin-top:8px;">Start Round</button>
+  </div>
+</div>
+
+<div id="game" class="screen">
+  <div class="hole-header">
+    <h2>Hole <span id="currentHoleNum">1</span></h2>
+    <div class="progress">Hole <span id="holeProgress">1</span> of <span id="totalHoles">9</span></div>
+  </div>
+  <div id="scoreboard" class="card scoreboard"></div>
+  <div id="playersContainer"></div>
+  <div class="nav-buttons">
+    <button class="secondary" onclick="prevHole()" id="prevBtn" disabled>Previous</button>
+    <button onclick="nextHole()" id="nextBtn">Next Hole</button>
+  </div>
+</div>
+
+<div id="summary" class="screen">
+  <h1>Round Complete</h1>
+  <div class="card">
+    <table class="summary-table" id="summaryTable"></table>
+  </div>
+  <div class="btn-row">
+    <button onclick="newRound()">New Round</button>
+    <button class="secondary" onclick="exportResults()">Copy Results</button>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
